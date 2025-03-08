@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jim_app/routes/jim_routes.dart';
 import 'package:jim_app/theme/theme.dart';
 
 class JimNavBar extends StatelessWidget {
-  final RxInt selectedIndex = 0.obs;
+  const JimNavBar({super.key});
 
-  final Map<String, String> routes = JimRoutes.routes;
+  // Define routes and icons
+  static final List<String> _routes = ['/home', '/log', '/stat', '/profile'];
+  static final List<IconData> _icons = [
+    Icons.home,
+    Icons.assignment,
+    Icons.bar_chart,
+    Icons.person,
+  ];
 
-  JimNavBar({super.key});
+  int _getSelectedIndex() => _routes.indexOf(Get.currentRoute);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height:60,
-      color: JimColors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [],
+    final selectedIndex = _getSelectedIndex();
+
+    return NavigationBar(
+      backgroundColor: JimColors.white,
+      indicatorColor: JimColors.primary,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      selectedIndex: selectedIndex,
+      onDestinationSelected: (index) => Get.offNamed(_routes[index]),
+      destinations: List.generate(
+        _icons.length,
+        (index) => NavigationDestination(
+          icon: Icon(
+            _icons[index],
+            color: selectedIndex == index ? Colors.white : JimColors.black,
+          ),
+          selectedIcon: Icon(_icons[index], color: Colors.white),
+          label: '',
+        ),
       ),
     );
   }

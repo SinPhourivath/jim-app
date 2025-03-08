@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 import '../../widgets/navigations/jim_nav_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class ExerciseScreen extends StatelessWidget {
+  const ExerciseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

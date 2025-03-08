@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class JimIconButton extends StatelessWidget {
-  const JimIconButton({super.key, required this.route, required this.icon});
+import '../../theme/theme.dart';
 
-  final String route;
+class JimIconButton extends StatelessWidget {
+  const JimIconButton({super.key, required this.icon, required this.onPressed});
+
   final IconData icon;
+  final Color? color = JimColors.black;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(onPressed: () {}, icon: Icon(icon));
+    return IconButton(icon: Icon(icon), color: color, onPressed: onPressed);
   }
 }

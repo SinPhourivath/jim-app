@@ -6,7 +6,13 @@ class JimNavBar extends StatelessWidget {
   const JimNavBar({super.key});
 
   // Define routes and icons
-  static final List<String> _routes = ['/home', '/log', '/stat', '/profile'];
+  static final List<String> _routes = [
+    '/workout',
+    '/exercise',
+    '/log',
+    '/profile',
+  ];
+
   static final List<IconData> _icons = [
     Icons.home,
     Icons.assignment,

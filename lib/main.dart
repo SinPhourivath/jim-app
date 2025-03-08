@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'widgets/actions/jim_button.dart';
+import 'routes/jim_routes.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
 
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: JimButton(text: "Testing", onPressed: () {}, icon: Icons.calendar_month,),
-      ),
+      initialRoute: JimRoutes.routes['home'],
+      getPages: JimRoutes.pages,
     );
   }
 }
